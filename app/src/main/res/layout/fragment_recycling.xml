@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.RecyclingFragment">
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/recycle"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:background="@drawable/custom_edittext1"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/recycle1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:textColor="@color/darkGreen"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/recycle2"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:textSize="18dp"
+        android:padding="10dp"
+        android:background="@drawable/custom_edittext1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/recycle3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:background="@drawable/custom_edittext1"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/recycle4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:background="@drawable/custom_edittext1"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/recycle5" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:background="@drawable/custom_edittext1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="20dp"
+        android:text="@string/recycle6" />
+
+</LinearLayout>
