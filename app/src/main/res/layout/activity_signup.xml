@@ -78,7 +78,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_RF_password"
+        android:id="@+id/signup_TF_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signup_TF_email"
@@ -98,10 +98,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signup_RF_confirmPassword"
+        android:id="@+id/signup_TF_confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signup_RF_password"
+        android:layout_below="@+id/signup_TF_password"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         android:hint="Confirm Password"
@@ -117,8 +117,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/signup_BTN_login"
-        android:layout_below="@+id/signup_RF_confirmPassword"
+        android:id="@+id/signup_BTN_signup"
+        android:layout_below="@+id/signup_TF_confirmPassword"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -126,7 +126,7 @@
         android:text="Create Account"
         />
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+    <ProgressBar
         android:id="@+id/signup_PB_loading"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

@@ -32,7 +32,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_RF_password"
+        android:id="@+id/login_TF_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_TF_email"
@@ -52,7 +52,7 @@
 
     <Button
         android:id="@+id/login_BTN_login"
-        android:layout_below="@+id/login_RF_password"
+        android:layout_below="@+id/login_TF_password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -71,13 +71,13 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/login_DV"
         style="?attr/materialButtonOutlinedStyle"
-        android:id="@+id/outlinedButton"
+        android:id="@+id/login_BTN_signup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Create new account"
         />
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+    <ProgressBar
         android:id="@+id/login_PB_loading"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

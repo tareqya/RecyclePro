@@ -44,27 +44,46 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/editAccount_ConstraintLayout_profileImg"
+    <LinearLayout
         android:id="@+id/editAccount_TF_fullName"
+        android:layout_below="@+id/editAccount_ConstraintLayout_profileImg"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:hint="Full Name"
-
         >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editAccount_TF_firstName"
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            />
+            android:layout_below="@+id/login_IV_icon"
+            android:layout_marginEnd="10dp"
+            android:hint="FirstName">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editAccount_TF_lastName"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="Last Name">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editAccount_TF_phone"
@@ -86,7 +105,7 @@
 
 
     <Button
-        android:id="@+id/editAccount_BTN_createAccount"
+        android:id="@+id/editAccount_BTN_updateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="200dp"
@@ -96,7 +115,7 @@
         android:text="Update Account"
         />
 
-    <com.google.android.material.progressindicator.CircularProgressIndicator
+    <ProgressBar
         android:id="@+id/editAccount_PB_loading"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

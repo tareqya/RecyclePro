@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1026325778131",
+    "project_id": "recyclepro-94e88",
+    "storage_bucket": "recyclepro-94e88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026325778131:android:cf61dca413beb9714a0e26",
+        "android_client_info": {
+          "package_name": "com.example.recyclepro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2M3yCQpfnsnp9a1yyr1N9khsNAimYrbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
