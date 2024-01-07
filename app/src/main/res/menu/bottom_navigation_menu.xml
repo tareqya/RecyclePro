@@ -15,7 +15,7 @@
         android:id="@+id/add"
         android:enabled="true"
         android:icon="@drawable/baseline_add_box_24"
-        android:title="Add Path"/>
+        android:title="Add Idea"/>
     <item
         android:id="@+id/profile"
         android:enabled="true"

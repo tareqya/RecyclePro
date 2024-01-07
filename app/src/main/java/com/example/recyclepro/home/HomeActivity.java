@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.recyclepro.R;
+import com.example.recyclepro.callback.CategoryCallBack;
 import com.example.recyclepro.callback.UserCallBack;
+import com.example.recyclepro.utils.Category;
 import com.example.recyclepro.utils.Database;
 import com.example.recyclepro.utils.User;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -47,13 +51,13 @@ public class HomeActivity extends AppCompatActivity {
         homeFragment = new HomeFragment(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fHome_FL_home, homeFragment).commit();
 
-        addFragment = new AddFragment();
+        addFragment = new AddFragment(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fHome_FL_add, addFragment).commit();
 
         profileFragment = new ProfileFragment(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fHome_FL_profile, profileFragment).commit();
 
-        recycleFragment = new RecycleFragment();
+        recycleFragment = new RecycleFragment(this);
         getSupportFragmentManager().beginTransaction().add(R.id.fHome_FL_recycle, recycleFragment).commit();
 
     }
@@ -61,10 +65,18 @@ public class HomeActivity extends AppCompatActivity {
     private void initVars() {
 
         database = new Database();
+        database.setCategoryCallBack(new CategoryCallBack() {
+            @Override
+            public void onFetchCategoriesComplete(ArrayList<Category> categories) {
+                addFragment.setCategories(categories);
+                recycleFragment.setCategories(categories);
+            }
+        });
         database.setUserCallBack(new UserCallBack() {
             @Override
             public void onUserFetchDataComplete(User user) {
                 profileFragment.setCurrentUser(user);
+                currentUser = user;
             }
 
             @Override
@@ -74,6 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         database.fetchUserData(database.getCurrentUser().getUid());
+        database.fetchCategories();
 
         fHome_FL_home.setVisibility(View.VISIBLE);
         fHome_FL_recycle.setVisibility(View.INVISIBLE);

@@ -70,10 +70,26 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fAdd_TF_description"
+        android:id="@+id/fAdd_TF_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fAdd_LL_productWrapper"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Idea title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textMultiLine"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fAdd_TF_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fAdd_TF_title"
         android:layout_marginHorizontal="10dp"
         android:hint="Description the idea">
 
@@ -93,7 +109,7 @@
         android:layout_below="@id/fAdd_TF_description"
         android:src="@drawable/upload"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         />
 
     <Button
@@ -102,6 +118,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/fAdd_IV_uploadImage"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Add" />
 </RelativeLayout>

@@ -58,8 +58,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         currentUser = (User) intent.getSerializableExtra(ProfileFragment.USER_INTENT_KEY);
-        if(!checkPermissions()) {
-            requestPermissions();
+        if(!Generic.checkPermissions(this)) {
+            Generic.requestPermissions(this);
         }
         findViews();
         initVars();
@@ -134,31 +134,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
         editAccount_FBTN_uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkPermissions()){
+                if(Generic.checkPermissions(UpdateProfileActivity.this)){
                     showImageSourceDialog();
                 }else{
                     Toast.makeText(UpdateProfileActivity.this, "no permissions to access camera", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public  boolean checkPermissions() {
-        return (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_GRANTED);
-    }
-
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{
-                        Manifest.permission.CAMERA,
-                        Manifest.permission.READ_EXTERNAL_STORAGE
-                },
-                100
-        );
     }
 
     private void showImageSourceDialog() {

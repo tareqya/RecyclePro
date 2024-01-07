@@ -90,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         Database db = new Database();
         if(db.getCurrentUser() != null){
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish();
         }
     }
 }

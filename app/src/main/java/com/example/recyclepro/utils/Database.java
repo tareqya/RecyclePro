@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.recyclepro.callback.AuthCallBack;
+import com.example.recyclepro.callback.CategoryCallBack;
+import com.example.recyclepro.callback.IdeaCallBack;
 import com.example.recyclepro.callback.UserCallBack;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,15 +18,22 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.ArrayList;
 
 public class Database {
     public static final String USERS_TABLE = "Users";
     public static final String USERS_PROFILE_IMAGES = "Profile";
+    public static final String CATEGORIES_TABLE = "Categories";
+    public static final String IDEAS_TABLE = "Ideas";
     private FirebaseAuth mAuth;
     private AuthCallBack authCallBack;
     private UserCallBack userCallBack;
+    private IdeaCallBack ideaCallBack;
+    private CategoryCallBack categoryCallBack;
     private FirebaseFirestore db;
     FirebaseStorage storage;
 
@@ -42,6 +51,12 @@ public class Database {
         this.userCallBack = userCallBack;
     }
 
+    public void setCategoryCallBack(CategoryCallBack categoryCallBack){
+        this.categoryCallBack = categoryCallBack;
+    }
+    public void setIdeaCallBack(IdeaCallBack ideaCallBack){
+        this.ideaCallBack = ideaCallBack;
+    }
     public void loginUser(String email, String password){
         this.mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -108,6 +123,33 @@ public class Database {
                     user.setImageUrl(imageUrl);
                 }
                 userCallBack.onUserFetchDataComplete(user);
+            }
+        });
+    }
+
+    public void fetchCategories(){
+        this.db.collection(CATEGORIES_TABLE).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                ArrayList<Category> categories = new ArrayList<>();
+                for(DocumentSnapshot item: value.getDocuments()){
+                    Category category = item.toObject(Category.class);
+                    category.setKey(item.getId());
+                    categories.add(category);
+                }
+
+                categoryCallBack.onFetchCategoriesComplete(categories);
+            }
+        });
+    }
+
+    public void uploadIdea(Idea idea){
+        this.db.collection(IDEAS_TABLE).document().set(idea)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                ideaCallBack.onAddIdeaComplete(task);
             }
         });
     }
