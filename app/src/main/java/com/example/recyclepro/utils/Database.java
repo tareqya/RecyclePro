@@ -16,11 +16,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.Filter;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
+import com.google.firestore.v1.StructuredQuery;
 
 import java.util.ArrayList;
 
@@ -169,6 +171,28 @@ public class Database {
             System.out.println(e.getMessage().toString());
             return false;
         }
+    }
 
+    public void fetchIdeasByCategoryAndProduct(String categoryName, String productName){
+
+        this.db.collection(IDEAS_TABLE)
+                .whereEqualTo("category", categoryName)
+                .whereEqualTo("product", productName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        ArrayList<Idea> ideas = new ArrayList<>();
+                        for(DocumentSnapshot item: value.getDocuments()){
+                            Idea idea = item.toObject(Idea.class);
+                            if(idea.getImagePath() != null){
+                                idea.setImageUrl(downloadImageUrl(idea.getImagePath()));
+                            }
+
+                            ideas.add(idea);
+                        }
+
+                        ideaCallBack.onFetchIdeasComplete(ideas);
+                    }
+                });
     }
 }

@@ -69,4 +69,9 @@
         android:text="Search"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fRecycle_RV_ideas"
+        android:layout_below="@+id/fRecycle_BTN_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

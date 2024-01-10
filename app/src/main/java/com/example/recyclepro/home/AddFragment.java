@@ -88,6 +88,11 @@ public class AddFragment extends Fragment {
                     fAdd_IV_uploadImage.setImageResource(R.drawable.upload);
                 }
             }
+
+            @Override
+            public void onFetchIdeasComplete(ArrayList<Idea> ideas) {
+
+            }
         });
 
         fAdd_BTN_AddIdea.setOnClickListener(new View.OnClickListener() {
